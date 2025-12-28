@@ -167,31 +167,111 @@
         position: relative;
     }
     
-    /* Language Switcher */
+    /* Language Switcher Dropdown */
     .lang-switcher {
-        display: flex;
-        align-items: center;
-        gap: 5px;
+        position: relative;
         margin-left: 15px;
     }
     
-    .lang-btn {
-        background: none;
+    .lang-current {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: white;
         border: 2px solid #ddd;
-        padding: 5px 10px;
-        border-radius: 4px;
+        padding: 6px 12px;
+        border-radius: 6px;
         cursor: pointer;
-        font-size: 12px;
+        font-size: 13px;
         font-weight: 600;
         transition: var(--transition);
-        color: var(--text-gray);
+        color: var(--text-dark);
     }
     
-    .lang-btn:hover,
-    .lang-btn.active {
+    .lang-current:hover {
         border-color: var(--primary-red);
-        color: var(--primary-red);
+    }
+    
+    .lang-current .flag {
+        width: 20px;
+        height: 14px;
+        border-radius: 2px;
+        object-fit: cover;
+    }
+    
+    .lang-current i {
+        font-size: 10px;
+        margin-left: 4px;
+        transition: transform 0.3s;
+    }
+    
+    .lang-switcher.open .lang-current i {
+        transform: rotate(180deg);
+    }
+    
+    .lang-dropdown {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        background: white;
+        border-radius: 8px;
+        box-shadow: var(--shadow-lg);
+        min-width: 160px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 1002;
+        overflow: hidden;
+    }
+    
+    .lang-switcher.open .lang-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .lang-option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-dark);
+        transition: var(--transition);
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+    }
+    
+    .lang-option:hover {
+        background-color: var(--bg-light);
+    }
+    
+    .lang-option.active {
         background-color: var(--primary-light);
+        color: var(--primary-red);
+    }
+    
+    .lang-option .flag {
+        width: 24px;
+        height: 16px;
+        border-radius: 2px;
+        object-fit: cover;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .lang-option .lang-name {
+        flex: 1;
+    }
+    
+    .lang-option .lang-code {
+        font-size: 11px;
+        color: var(--text-gray);
+        text-transform: uppercase;
     }
     
     .header-right {
@@ -670,9 +750,19 @@
             margin-left: 0;
         }
         
-        .lang-btn {
+        .lang-current {
             padding: 4px 8px;
-            font-size: 11px;
+            font-size: 12px;
+        }
+        
+        .lang-current .flag {
+            width: 18px;
+            height: 12px;
+        }
+        
+        .lang-dropdown {
+            right: -10px;
+            min-width: 140px;
         }
         
         /* Mobile nav dropdown styles */
@@ -730,9 +820,39 @@
                 <a href="#contact" data-i18n="nav_contact">Liên hệ</a>
             </nav>
             <div class="header-right">
-                <div class="lang-switcher">
-                    <button class="lang-btn active" data-lang="vi" title="Tiếng Việt">VI</button>
-                    <button class="lang-btn" data-lang="en" title="English">EN</button>
+                <div class="lang-switcher" id="langSwitcher">
+                    <button class="lang-current" id="langCurrent" aria-label="Chọn ngôn ngữ">
+                        <img src="https://flagcdn.com/w40/vn.png" alt="VI" class="flag" id="currentFlag">
+                        <span id="currentLangCode">VI</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="lang-dropdown" id="langDropdown">
+                        <button class="lang-option active" data-lang="vi">
+                            <img src="https://flagcdn.com/w40/vn.png" alt="Vietnam" class="flag">
+                            <span class="lang-name">Tiếng Việt</span>
+                            <span class="lang-code">VI</span>
+                        </button>
+                        <button class="lang-option" data-lang="en">
+                            <img src="https://flagcdn.com/w40/us.png" alt="English" class="flag">
+                            <span class="lang-name">English</span>
+                            <span class="lang-code">EN</span>
+                        </button>
+                        <button class="lang-option" data-lang="zh">
+                            <img src="https://flagcdn.com/w40/cn.png" alt="中文" class="flag">
+                            <span class="lang-name">简体中文</span>
+                            <span class="lang-code">ZH</span>
+                        </button>
+                        <button class="lang-option" data-lang="ja">
+                            <img src="https://flagcdn.com/w40/jp.png" alt="日本語" class="flag">
+                            <span class="lang-name">日本語</span>
+                            <span class="lang-code">JA</span>
+                        </button>
+                        <button class="lang-option" data-lang="ko">
+                            <img src="https://flagcdn.com/w40/kr.png" alt="한국어" class="flag">
+                            <span class="lang-name">한국어</span>
+                            <span class="lang-code">KO</span>
+                        </button>
+                    </div>
                 </div>
                 <a href="./asset/TAYAFOOD_PROFILE.pdf" download class="btn-contact"><i class="fas fa-file-download"></i> <span data-i18n="download_profile">Tải Hồ Sơ</span></a>
                 <button class="menu-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
@@ -1069,11 +1189,9 @@
     <!-- i18n Language Files - Load before main.js -->
     <script src="./asset/js/i18n/vi.js"></script>
     <script src="./asset/js/i18n/en.js"></script>
-    <!-- Add more languages here:
     <script src="./asset/js/i18n/zh.js"></script>
     <script src="./asset/js/i18n/ja.js"></script>
     <script src="./asset/js/i18n/ko.js"></script>
-    -->
     
     <!-- Main JavaScript -->
     <script src="./asset/js/main.js"></script>

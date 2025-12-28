@@ -14,8 +14,15 @@
     // ==========================================
     const CONFIG = {
         defaultLang: 'vi',
-        supportedLangs: ['vi', 'en'], // Thêm ngôn ngữ mới vào đây: 'zh', 'ja', 'ko'
-        storageKey: 'tayafood_lang'
+        supportedLangs: ['vi', 'en', 'zh', 'ja', 'ko'],
+        storageKey: 'tayafood_lang',
+        langMeta: {
+            vi: { code: 'VI', name: 'Tiếng Việt', flag: 'https://flagcdn.com/w40/vn.png' },
+            en: { code: 'EN', name: 'English', flag: 'https://flagcdn.com/w40/us.png' },
+            zh: { code: 'ZH', name: '简体中文', flag: 'https://flagcdn.com/w40/cn.png' },
+            ja: { code: 'JA', name: '日本語', flag: 'https://flagcdn.com/w40/jp.png' },
+            ko: { code: 'KO', name: '한국어', flag: 'https://flagcdn.com/w40/kr.png' }
+        }
     };
 
     // ==========================================
@@ -23,8 +30,20 @@
     // ==========================================
     const I18n = {
         currentLang: null,
+        switcher: null,
+        dropdown: null,
+        currentBtn: null,
+        currentFlag: null,
+        currentCode: null,
 
         init() {
+            // Get DOM elements
+            this.switcher = document.getElementById('langSwitcher');
+            this.dropdown = document.getElementById('langDropdown');
+            this.currentBtn = document.getElementById('langCurrent');
+            this.currentFlag = document.getElementById('currentFlag');
+            this.currentCode = document.getElementById('currentLangCode');
+
             // Get saved language or default
             this.currentLang = localStorage.getItem(CONFIG.storageKey) || CONFIG.defaultLang;
             
@@ -48,6 +67,7 @@
             document.documentElement.lang = lang;
 
             const translations = window.i18n[lang];
+            const meta = CONFIG.langMeta[lang];
 
             // Update all translatable elements
             document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -57,14 +77,48 @@
                 }
             });
 
-            // Update active button state
-            document.querySelectorAll('.lang-btn').forEach(btn => {
+            // Update current language display
+            if (this.currentFlag && meta) {
+                this.currentFlag.src = meta.flag;
+                this.currentFlag.alt = meta.code;
+            }
+            if (this.currentCode && meta) {
+                this.currentCode.textContent = meta.code;
+            }
+
+            // Update active state in dropdown
+            document.querySelectorAll('.lang-option').forEach(btn => {
                 btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
             });
+
+            // Close dropdown after selection
+            this.closeDropdown();
+        },
+
+        toggleDropdown() {
+            if (this.switcher) {
+                this.switcher.classList.toggle('open');
+            }
+        },
+
+        closeDropdown() {
+            if (this.switcher) {
+                this.switcher.classList.remove('open');
+            }
         },
 
         bindEvents() {
-            document.querySelectorAll('.lang-btn').forEach(btn => {
+            // Toggle dropdown on current button click
+            if (this.currentBtn) {
+                this.currentBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.toggleDropdown();
+                });
+            }
+
+            // Language option clicks
+            document.querySelectorAll('.lang-option').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -73,6 +127,13 @@
                         this.applyLanguage(lang);
                     }
                 });
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (this.switcher && !this.switcher.contains(e.target)) {
+                    this.closeDropdown();
+                }
             });
         }
     };
