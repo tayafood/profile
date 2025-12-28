@@ -14,14 +14,15 @@
     // ==========================================
     const CONFIG = {
         defaultLang: 'vi',
-        supportedLangs: ['vi', 'en', 'zh', 'ja', 'ko'],
+        supportedLangs: ['vi', 'en', 'zh', 'ja', 'ko', 'th'],
         storageKey: 'tayafood_lang',
         langMeta: {
             vi: { code: 'VI', name: 'Tiếng Việt', flag: 'https://flagcdn.com/w40/vn.png' },
             en: { code: 'EN', name: 'English', flag: 'https://flagcdn.com/w40/us.png' },
             zh: { code: 'ZH', name: '简体中文', flag: 'https://flagcdn.com/w40/cn.png' },
             ja: { code: 'JA', name: '日本語', flag: 'https://flagcdn.com/w40/jp.png' },
-            ko: { code: 'KO', name: '한국어', flag: 'https://flagcdn.com/w40/kr.png' }
+            ko: { code: 'KO', name: '한국어', flag: 'https://flagcdn.com/w40/kr.png' },
+            th: { code: 'TH', name: 'ภาษาไทย', flag: 'https://flagcdn.com/w40/th.png' }
         }
     };
 
@@ -90,6 +91,11 @@
             document.querySelectorAll('.lang-option').forEach(btn => {
                 btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
             });
+
+            // Apply SEO for current language
+            if (typeof window.applySEO === 'function') {
+                window.applySEO(lang);
+            }
 
             // Close dropdown after selection
             this.closeDropdown();
