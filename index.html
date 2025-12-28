@@ -158,6 +158,46 @@
         color: var(--text-dark);
         cursor: pointer;
         display: block;
+        padding: 10px;
+        margin: -10px;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+        z-index: 1001;
+        position: relative;
+    }
+    
+    /* Language Switcher */
+    .lang-switcher {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-left: 15px;
+    }
+    
+    .lang-btn {
+        background: none;
+        border: 2px solid #ddd;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 600;
+        transition: var(--transition);
+        color: var(--text-gray);
+    }
+    
+    .lang-btn:hover,
+    .lang-btn.active {
+        border-color: var(--primary-red);
+        color: var(--primary-red);
+        background-color: var(--primary-light);
+    }
+    
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
     /* --- 3. HERO SECTION --- */
@@ -622,6 +662,19 @@
         }
         .logo-img { height: 35px; }
         
+        .header-right {
+            gap: 8px;
+        }
+        
+        .lang-switcher {
+            margin-left: 0;
+        }
+        
+        .lang-btn {
+            padding: 4px 8px;
+            font-size: 11px;
+        }
+        
         /* Mobile nav dropdown styles */
         .nav-links.active {
             display: flex !important;
@@ -668,27 +721,33 @@
             <a href="#" class="logo">
                 <img src="./asset/tayafood-logo-logan_transparent.PNG" alt="TAYA FOOD Logo" class="logo-img">
             </a>
-            <nav class="nav-links">
-                <a href="#intro">Giới thiệu</a>
-                <a href="#vision">Tầm nhìn</a>
-                <a href="#products">Sản phẩm</a>
-                <a href="#strengths">Thế mạnh</a>
-                <a href="#equipment">Thiết bị</a>
-                <a href="#contact">Liên hệ</a>
+            <nav class="nav-links" id="navLinks">
+                <a href="#intro" data-i18n="nav_intro">Giới thiệu</a>
+                <a href="#vision" data-i18n="nav_vision">Tầm nhìn</a>
+                <a href="#products" data-i18n="nav_products">Sản phẩm</a>
+                <a href="#strengths" data-i18n="nav_strengths">Thế mạnh</a>
+                <a href="#equipment" data-i18n="nav_equipment">Thiết bị</a>
+                <a href="#contact" data-i18n="nav_contact">Liên hệ</a>
             </nav>
-            <a href="./asset/TAYAFOOD_PROFILE.pdf" download class="btn-contact"><i class="fas fa-file-download" target="_blank"></i> Tải Hồ Sơ</a>
-            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+            <div class="header-right">
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="vi" title="Tiếng Việt">VI</button>
+                    <button class="lang-btn" data-lang="en" title="English">EN</button>
+                </div>
+                <a href="./asset/TAYAFOOD_PROFILE.pdf" download class="btn-contact"><i class="fas fa-file-download"></i> <span data-i18n="download_profile">Tải Hồ Sơ</span></a>
+                <button class="menu-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+            </div>
         </div>
     </header>
 
     <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
-            <p class="hero-subtitle">HỒ SƠ NĂNG LỰC DOANH NGHIỆP</p>
-            <h1 class="hero-title">CÔNG TY TNHH THỰC PHẨM <span>TAYA VIỆT NAM</span></h1>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">HỒ SƠ NĂNG LỰC DOANH NGHIỆP</p>
+            <h1 class="hero-title" data-i18n="hero_title">CÔNG TY TNHH THỰC PHẨM <span>TAYA VIỆT NAM</span></h1>
             <p style="font-size: 20px; margin-bottom: 30px; font-style: italic;">"ready to eat, ready to use"</p>
             <div class="hero-btn-group">
-                <a href="#intro" class="btn btn-primary">Khám Phá Ngay</a>
+                <a href="#intro" class="btn btn-primary" data-i18n="hero_btn">Khám Phá Ngay</a>
             </div>
         </div>
     </section>
@@ -697,16 +756,16 @@
     <section class="section-padding" style="background: white;">
         <div class="container">
             <div class="section-tag-wrapper">
-                <h2 class="section-main-title" style="border-left: 5px solid var(--primary-red); padding-left: 15px;">MỤC LỤC</h2>
+                <h2 class="section-main-title" style="border-left: 5px solid var(--primary-red); padding-left: 15px;" data-i18n="toc_title">MỤC LỤC</h2>
             </div>
             <div class="toc-content">
                 <div class="toc-list">
-                    <a href="#intro" class="toc-item"><span class="toc-number">01</span><span class="toc-text">Giới thiệu doanh nghiệp</span></a>
-                    <a href="#vision" class="toc-item"><span class="toc-number">02</span><span class="toc-text">Tầm nhìn - Sứ mệnh - Giá trị cốt lõi</span></a>
-                    <a href="#products" class="toc-item"><span class="toc-number">03</span><span class="toc-text">Lĩnh vực kinh doanh - Danh mục sản phẩm</span></a>
-                    <a href="#strengths" class="toc-item"><span class="toc-number">04</span><span class="toc-text">Thế mạnh của Taya Food</span></a>
-                    <a href="#equipment" class="toc-item"><span class="toc-number">05</span><span class="toc-text">Trang thiết bị và máy móc</span></a>
-                    <a href="#cert" class="toc-item"><span class="toc-number">06</span><span class="toc-text">Giấy chứng nhận ISO 22000:2018</span></a>
+                    <a href="#intro" class="toc-item"><span class="toc-number">01</span><span class="toc-text" data-i18n="toc_01">Giới thiệu doanh nghiệp</span></a>
+                    <a href="#vision" class="toc-item"><span class="toc-number">02</span><span class="toc-text" data-i18n="toc_02">Tầm nhìn - Sứ mệnh - Giá trị cốt lõi</span></a>
+                    <a href="#products" class="toc-item"><span class="toc-number">03</span><span class="toc-text" data-i18n="toc_03">Lĩnh vực kinh doanh - Danh mục sản phẩm</span></a>
+                    <a href="#strengths" class="toc-item"><span class="toc-number">04</span><span class="toc-text" data-i18n="toc_04">Thế mạnh của Taya Food</span></a>
+                    <a href="#equipment" class="toc-item"><span class="toc-number">05</span><span class="toc-text" data-i18n="toc_05">Trang thiết bị và máy móc</span></a>
+                    <a href="#cert" class="toc-item"><span class="toc-number">06</span><span class="toc-text" data-i18n="toc_06">Giấy chứng nhận ISO 22000:2018</span></a>
                 </div>
                 <div class="toc-image">
                     <img src="./asset/images/TAYAFOOD-02.png" style="border-radius: 12px; box-shadow: var(--shadow-lg);" alt="Factory Worker">
@@ -720,27 +779,27 @@
         <div class="container">
             <div class="section-tag-wrapper">
                 <div class="section-number-tag">01</div>
-                <h2 class="section-main-title">GIỚI THIỆU DOANH NGHIỆP</h2>
+                <h2 class="section-main-title" data-i18n="intro_title">GIỚI THIỆU DOANH NGHIỆP</h2>
             </div>
             <div class="timeline-grid">
                 <div>
-                    <h3 class="red-line-title">Lịch sử hình thành</h3>
+                    <h3 class="red-line-title" data-i18n="intro_history">Lịch sử hình thành</h3>
                     <div class="timeline">
                         <div class="timeline-item">
                             <div class="timeline-marker"></div><span class="timeline-year">2018</span>
-                            <p style="font-size:14px;">Thành lập TAYA FOOD với mục tiêu phân phối gia vị hàng đầu nội địa.</p>
+                            <p style="font-size:14px;" data-i18n="intro_2018">Thành lập TAYA FOOD với mục tiêu phân phối gia vị hàng đầu nội địa.</p>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-marker"></div><span class="timeline-year">2020</span>
-                            <p style="font-size:14px;">Mở rộng nhà xưởng sản xuất nông sản tẩm gia vị (hạt điều, đậu phộng) xuất khẩu.</p>
+                            <p style="font-size:14px;" data-i18n="intro_2020">Mở rộng nhà xưởng sản xuất nông sản tẩm gia vị (hạt điều, đậu phộng) xuất khẩu.</p>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-marker"></div><span class="timeline-year">2022</span>
-                            <p style="font-size:14px;">Đầu tư mạnh mẽ vào dòng sản phẩm gia vị - xốt chuyên biệt cho FMCG và F&B.</p>
+                            <p style="font-size:14px;" data-i18n="intro_2022">Đầu tư mạnh mẽ vào dòng sản phẩm gia vị - xốt chuyên biệt cho FMCG và F&B.</p>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-marker"></div><span class="timeline-year">Hiện nay</span>
-                            <p style="font-size:14px;">Nhà sản xuất gia công OEM đáng tin cậy cho nhiều thương hiệu trong và ngoài nước.</p>
+                            <div class="timeline-marker"></div><span class="timeline-year" data-i18n="intro_now_year">Hiện nay</span>
+                            <p style="font-size:14px;" data-i18n="intro_now">Nhà sản xuất gia công OEM đáng tin cậy cho nhiều thương hiệu trong và ngoài nước.</p>
                         </div>
                     </div>
                 </div>
@@ -754,27 +813,27 @@
         <div class="container">
             <div class="section-tag-wrapper">
                 <div class="section-number-tag">02</div>
-                <h2 class="section-main-title">TẦM NHÌN - SỨ MỆNH<br>GIÁ TRỊ CỐT LÕI</h2>
+                <h2 class="section-main-title" data-i18n="vision_title">TẦM NHÌN - SỨ MỆNH<br>GIÁ TRỊ CỐT LÕI</h2>
             </div>
             <div class="vision-grid">
                 <div>
                     <div style="margin-bottom:20px;">
-                        <span class="subsection-header">Tầm nhìn</span>
-                        <p style="text-align:justify;">Trở thành đối tác chiến lược hàng đầu trong lĩnh vực gia vị và thực phẩm tiện lợi, nguồn cung ổn định cho ngành thực phẩm Việt Nam.</p>
+                        <span class="subsection-header" data-i18n="vision_vision">Tầm nhìn</span>
+                        <p style="text-align:justify;" data-i18n="vision_vision_text">Trở thành đối tác chiến lược hàng đầu trong lĩnh vực gia vị và thực phẩm tiện lợi, nguồn cung ổn định cho ngành thực phẩm Việt Nam.</p>
                     </div>
                     <div>
-                        <span class="subsection-header">Sứ mệnh</span>
-                        <p style="text-align:justify;">Cung cấp giải pháp sản xuất tối ưu, giúp đối tác rút ngắn thời gian đưa sản phẩm ra thị trường với chi phí hợp lý và chất lượng ổn định.</p>
+                        <span class="subsection-header" data-i18n="vision_mission">Sứ mệnh</span>
+                        <p style="text-align:justify;" data-i18n="vision_mission_text">Cung cấp giải pháp sản xuất tối ưu, giúp đối tác rút ngắn thời gian đưa sản phẩm ra thị trường với chi phí hợp lý và chất lượng ổn định.</p>
                     </div>
                 </div>
                 <div>
-                    <h3 class="red-line-title">Giá trị cốt lõi</h3>
+                    <h3 class="red-line-title" data-i18n="vision_core">Giá trị cốt lõi</h3>
                     <ul class="business-areas-list">
-                        <li><strong>Chất lượng:</strong> Đặt lên hàng đầu.</li>
-                        <li><strong>Chính trực:</strong> Minh bạch, nhất quán.</li>
-                        <li><strong>Tôn trọng:</strong> Lắng nghe, thấu hiểu.</li>
-                        <li><strong>Trách nhiệm:</strong> Vì khách hàng và xã hội.</li>
-                        <li><strong>Tin tưởng:</strong> Hợp tác bằng uy tín.</li>
+                        <li><strong data-i18n="core_quality">Chất lượng:</strong> <span data-i18n="core_quality_desc">Đặt lên hàng đầu.</span></li>
+                        <li><strong data-i18n="core_integrity">Chính trực:</strong> <span data-i18n="core_integrity_desc">Minh bạch, nhất quán.</span></li>
+                        <li><strong data-i18n="core_respect">Tôn trọng:</strong> <span data-i18n="core_respect_desc">Lắng nghe, thấu hiểu.</span></li>
+                        <li><strong data-i18n="core_responsibility">Trách nhiệm:</strong> <span data-i18n="core_responsibility_desc">Vì khách hàng và xã hội.</span></li>
+                        <li><strong data-i18n="core_trust">Tin tưởng:</strong> <span data-i18n="core_trust_desc">Hợp tác bằng uy tín.</span></li>
                     </ul>
                 </div>
             </div>
@@ -786,21 +845,21 @@
         <div class="container">
             <div class="section-tag-wrapper">
                 <div class="section-number-tag">03</div>
-                <h2 class="section-main-title">LĨNH VỰC KINH DOANH<br>DANH MỤC SẢN PHẨM</h2>
+                <h2 class="section-main-title" data-i18n="products_title">LĨNH VỰC KINH DOANH<br>DANH MỤC SẢN PHẨM</h2>
             </div>
             
             <div style="margin-bottom: 50px;">
-                <h3 class="subsection-header">Lĩnh vực kinh doanh</h3>
+                <h3 class="subsection-header" data-i18n="business_areas">Lĩnh vực kinh doanh</h3>
                 <ul class="business-areas-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
-                    <li>Sản xuất nước xốt</li>
-                    <li>Sản xuất gia vị dạng bột</li>
-                    <li>Gia công, đóng gói theo yêu cầu (OEM)</li>
-                    <li>Cung cấp nguyên liệu cho chuỗi F&B</li>
-                    <li>Cung cấp nguyên liệu cho doanh nghiệp FMCG</li>
+                    <li data-i18n="biz_sauce">Sản xuất nước xốt</li>
+                    <li data-i18n="biz_powder">Sản xuất gia vị dạng bột</li>
+                    <li data-i18n="biz_oem">Gia công, đóng gói theo yêu cầu (OEM)</li>
+                    <li data-i18n="biz_fb">Cung cấp nguyên liệu cho chuỗi F&B</li>
+                    <li data-i18n="biz_fmcg">Cung cấp nguyên liệu cho doanh nghiệp FMCG</li>
                 </ul>
             </div>
 
-            <h3 class="subsection-header">Danh mục sản phẩm</h3>
+            <h3 class="subsection-header" data-i18n="product_catalog">Danh mục sản phẩm</h3>
             <div class="products-grid">
                 <!-- Card 1 -->
                 <div class="product-card">
@@ -808,8 +867,8 @@
                         <img src="./asset/images/TAYAFOOD-17.png" alt="Gia vị rắc tẩm">
                     </div>
                     <div class="product-footer">
-                        <div class="product-title">Gia vị rắc tẩm</div>
-                        <div class="product-desc">Dùng cho snack, khoai tây chiên, gà rán...</div>
+                        <div class="product-title" data-i18n="prod_seasoning">Gia vị rắc tẩm</div>
+                        <div class="product-desc" data-i18n="prod_seasoning_desc">Dùng cho snack, khoai tây chiên, gà rán...</div>
                     </div>
                 </div>
                 <!-- Card 2 -->
@@ -818,8 +877,8 @@
                         <img src="./asset/images/TAYAFOOD-18.png" alt="Gia vị bột soup">
                     </div>
                     <div class="product-footer">
-                        <div class="product-title">Gia vị bột soup</div>
-                        <div class="product-desc">Dùng cho các loại mì, phở ăn liền</div>
+                        <div class="product-title" data-i18n="prod_soup">Gia vị bột soup</div>
+                        <div class="product-desc" data-i18n="prod_soup_desc">Dùng cho các loại mì, phở ăn liền</div>
                     </div>
                 </div>
                 <!-- Card 3 -->
@@ -828,8 +887,8 @@
                         <img src="./asset/images/TAYAFOOD-19.png" alt="Gia vị xốt">
                     </div>
                     <div class="product-footer">
-                        <div class="product-title">Gia vị xốt</div>
-                        <div class="product-desc">Dùng để chấm, tẩm ướp, nấu nước lẩu</div>
+                        <div class="product-title" data-i18n="prod_sauce">Gia vị xốt</div>
+                        <div class="product-desc" data-i18n="prod_sauce_desc">Dùng để chấm, tẩm ướp, nấu nước lẩu</div>
                     </div>
                 </div>
             </div>
@@ -841,38 +900,38 @@
         <div class="container">
             <div class="section-tag-wrapper">
                 <div class="section-number-tag">04</div>
-                <h2 class="section-main-title">THẾ MẠNH CỦA TAYA FOOD</h2>
+                <h2 class="section-main-title" data-i18n="strengths_title">THẾ MẠNH CỦA TAYA FOOD</h2>
             </div>
             
             <div class="strength-grid">
                 <!-- Strength 1 -->
                 <div class="strength-card">
                     <div class="strength-header">
-                        <h3>Năng lực R&D<br>Sản phẩm chuyên sâu</h3>
+                        <h3 data-i18n="strength_1_title">Năng lực R&D<br>Sản phẩm chuyên sâu</h3>
                     </div>
                     <div class="strength-body">
                         <img src="./asset/images/TAYAFOOD-06.png" style="width:100%; height:150px; object-fit:cover; margin-bottom:15px; border-radius:4px;">
-                        <p>R&D là nền tảng cốt lõi để phát triển các dòng gia vị - xốt độc đáo, phù hợp với thị hiếu đa dạng và các xu hướng ẩm thực hiện đại.</p>
+                        <p data-i18n="strength_1_desc">R&D là nền tảng cốt lõi để phát triển các dòng gia vị - xốt độc đáo, phù hợp với thị hiếu đa dạng và các xu hướng ẩm thực hiện đại.</p>
                     </div>
                 </div>
                 <!-- Strength 2 -->
                 <div class="strength-card">
                     <div class="strength-header">
-                        <h3>Sản xuất linh hoạt<br>Đơn hàng mẫu</h3>
+                        <h3 data-i18n="strength_2_title">Sản xuất linh hoạt<br>Đơn hàng mẫu</h3>
                     </div>
                     <div class="strength-body">
                         <img src="./asset/images/TAYAFOOD-07.png" style="width:100%; height:150px; object-fit:cover; margin-bottom:15px; border-radius:4px;">
-                        <p>Hỗ trợ các doanh nghiệp thử nghiệm dòng sản phẩm mới trên thị trường với quy trình sản xuất linh hoạt cùng chi phí hợp lý.</p>
+                        <p data-i18n="strength_2_desc">Hỗ trợ các doanh nghiệp thử nghiệm dòng sản phẩm mới trên thị trường với quy trình sản xuất linh hoạt cùng chi phí hợp lý.</p>
                     </div>
                 </div>
                 <!-- Strength 3 -->
                 <div class="strength-card">
                     <div class="strength-header">
-                        <h3>Đề cao tính<br>Đổi mới sáng tạo</h3>
+                        <h3 data-i18n="strength_3_title">Đề cao tính<br>Đổi mới sáng tạo</h3>
                     </div>
                     <div class="strength-body">
                         <img src="./asset/images/TAYAFOOD-08.png" style="width:100%; height:150px; object-fit:cover; margin-bottom:15px; border-radius:4px;">
-                        <p>Chủ động cải tiến công nghệ, quy trình để đáp ứng các yêu cầu đặc thù của từng ngành hàng. Cập nhật liên tục xu hướng tiêu dùng.</p>
+                        <p data-i18n="strength_3_desc">Chủ động cải tiến công nghệ, quy trình để đáp ứng các yêu cầu đặc thù của từng ngành hàng. Cập nhật liên tục xu hướng tiêu dùng.</p>
                     </div>
                 </div>
             </div>
@@ -884,28 +943,28 @@
         <div class="container">
             <div class="section-tag-wrapper">
                 <div class="section-number-tag">05</div>
-                <h2 class="section-main-title">TRANG THIẾT BỊ - MÁY MÓC</h2>
+                <h2 class="section-main-title" data-i18n="equipment_title">TRANG THIẾT BỊ - MÁY MÓC</h2>
             </div>
             
-            <p style="margin-bottom: 30px; text-align: justify;">TAYA FOOD sở hữu hệ thống thiết bị sản xuất hiện đại, tối ưu hóa nhằm đảm bảo năng suất vượt trội, chất lượng sản phẩm ổn định và đáp ứng đa dạng nhu cầu thị trường.</p>
+            <p style="margin-bottom: 30px; text-align: justify;" data-i18n="equipment_intro">TAYA FOOD sở hữu hệ thống thiết bị sản xuất hiện đại, tối ưu hóa nhằm đảm bảo năng suất vượt trội, chất lượng sản phẩm ổn định và đáp ứng đa dạng nhu cầu thị trường.</p>
 
             <div class="equipment-grid">
                 <!-- Line 1 -->
                 <div class="equipment-item">
                     <img src="./asset/images/TAYAFOOD-09.png" class="equipment-img" alt="Máy đóng gói bột">
                     <div class="equipment-info">
-                        <h3 class="red-line-title">Dây chuyền đóng gói gia vị dạng bột</h3>
-                        <span class="capacity-tag">Công suất 2 tấn/ngày</span>
-                        <p>Hệ thống tự động, đảm bảo quy trình đóng gói diễn ra nhanh chóng, chính xác và vệ sinh. Đáp ứng kịp thời các đơn hàng số lượng lớn.</p>
+                        <h3 class="red-line-title" data-i18n="equip_powder_line">Dây chuyền đóng gói gia vị dạng bột</h3>
+                        <span class="capacity-tag" data-i18n="equip_capacity">Công suất 2 tấn/ngày</span>
+                        <p data-i18n="equip_powder_desc">Hệ thống tự động, đảm bảo quy trình đóng gói diễn ra nhanh chóng, chính xác và vệ sinh. Đáp ứng kịp thời các đơn hàng số lượng lớn.</p>
                     </div>
                 </div>
                 <!-- Line 2 -->
                 <div class="equipment-item">
                     <img src="./asset/images/TAYAFOOD-10.png" class="equipment-img" alt="Máy đóng gói xốt">
                     <div class="equipment-info">
-                        <h3 class="red-line-title">Dây chuyền đóng gói gia vị dạng xốt</h3>
-                        <span class="capacity-tag">Công suất 2 tấn/ngày</span>
-                        <p>Máy móc chuyên dụng để chiết rót các sản phẩm dạng lỏng nhanh chóng. Cam kết đồng đều tiêu chuẩn và chất lượng ổn định.</p>
+                        <h3 class="red-line-title" data-i18n="equip_sauce_line">Dây chuyền đóng gói gia vị dạng xốt</h3>
+                        <span class="capacity-tag" data-i18n="equip_capacity">Công suất 2 tấn/ngày</span>
+                        <p data-i18n="equip_sauce_desc">Máy móc chuyên dụng để chiết rót các sản phẩm dạng lỏng nhanh chóng. Cam kết đồng đều tiêu chuẩn và chất lượng ổn định.</p>
                     </div>
                 </div>
             </div>
@@ -917,18 +976,18 @@
         <div class="container">
             <div class="section-tag-wrapper">
                 <div class="section-number-tag">06</div>
-                <h2 class="section-main-title">GIẤY CHỨNG NHẬN ISO 22000:2018</h2>
+                <h2 class="section-main-title" data-i18n="iso_title">GIẤY CHỨNG NHẬN ISO 22000:2018</h2>
             </div>
             
             <div class="iso-container">
                 <div style="flex: 1;">
-                    <h3 style="font-size:24px; color:var(--primary-red); margin-bottom:20px; font-weight:800;">CAM KẾT CHẤT LƯỢNG</h3>
-                    <p>Hệ thống quản lý an toàn thực phẩm của Taya Food được chứng nhận phù hợp với yêu cầu của tiêu chuẩn ISO 22000:2018 cho các phạm vi:</p>
+                    <h3 style="font-size:24px; color:var(--primary-red); margin-bottom:20px; font-weight:800;" data-i18n="iso_commitment">CAM KẾT CHẤT LƯỢNG</h3>
+                    <p data-i18n="iso_desc">Hệ thống quản lý an toàn thực phẩm của Taya Food được chứng nhận phù hợp với yêu cầu của tiêu chuẩn ISO 22000:2018 cho các phạm vi:</p>
                     <ul class="business-areas-list" style="margin-top:20px;">
-                        <li>Sản xuất nước xốt</li>
-                        <li>Sản xuất các loại gia vị dạng bột</li>
-                        <li>Chế biến các loại hạt tẩm gia vị</li>
-                        <li>Đóng gói thực phẩm khô</li>
+                        <li data-i18n="iso_scope_1">Sản xuất nước xốt</li>
+                        <li data-i18n="iso_scope_2">Sản xuất các loại gia vị dạng bột</li>
+                        <li data-i18n="iso_scope_3">Chế biến các loại hạt tẩm gia vị</li>
+                        <li data-i18n="iso_scope_4">Đóng gói thực phẩm khô</li>
                     </ul>
                 </div>
                 <div style="flex: 1; display: flex; justify-content: center;">
@@ -945,7 +1004,7 @@
     <section id="contact" class="section-padding" style="background: white;">
         <div class="container">
             <div class="section-tag-wrapper">
-                <h2 class="section-main-title">THÔNG TIN LIÊN HỆ</h2>
+                <h2 class="section-main-title" data-i18n="contact_title">THÔNG TIN LIÊN HỆ</h2>
             </div>
             
             <div class="contact-wrapper">
@@ -953,14 +1012,14 @@
                     <div class="info-item">
                         <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div>
-                            <strong style="text-transform:uppercase; font-size:12px; opacity:0.8;">Trụ sở chính</strong>
+                            <strong style="text-transform:uppercase; font-size:12px; opacity:0.8;" data-i18n="contact_hq">Trụ sở chính</strong>
                             <p>5C2 Hòa Bình, Phường Bình Thới, TP. Hồ Chí Minh</p>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-icon"><i class="fas fa-industry"></i></div>
                         <div>
-                            <strong style="text-transform:uppercase; font-size:12px; opacity:0.8;">Xưởng sản xuất</strong>
+                            <strong style="text-transform:uppercase; font-size:12px; opacity:0.8;" data-i18n="contact_factory">Xưởng sản xuất</strong>
                             <p>815/4/3B Hương Lộ 2, P. Bình Trị Đông, TP. Hồ Chí Minh</p>
                         </div>
                     </div>
@@ -997,8 +1056,8 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 CÔNG TY TNHH THỰC PHẨM TAYA VIỆT NAM.</p> 
-                <p>All Rights Reserved.</p>
+            <p data-i18n="footer_copyright">&copy; 2025 CÔNG TY TNHH THỰC PHẨM TAYA VIỆT NAM.</p> 
+                <p data-i18n="footer_rights">All Rights Reserved.</p>
         </div>
     </footer>
     
@@ -1008,32 +1067,312 @@
     </button>
 
     <script>
-        // Mobile Menu Logic
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        const header = document.querySelector('#header');
-        
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const isActive = navLinks.classList.contains('active');
-            menuToggle.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        // ==========================================
+        // MULTI-LANGUAGE SYSTEM
+        // ==========================================
+        const translations = {
+            vi: {
+                // Navigation
+                nav_intro: "Giới thiệu",
+                nav_vision: "Tầm nhìn",
+                nav_products: "Sản phẩm",
+                nav_strengths: "Thế mạnh",
+                nav_equipment: "Thiết bị",
+                nav_contact: "Liên hệ",
+                download_profile: "Tải Hồ Sơ",
+                
+                // Hero
+                hero_subtitle: "HỒ SƠ NĂNG LỰC DOANH NGHIỆP",
+                hero_title: "CÔNG TY TNHH THỰC PHẨM <span>TAYA VIỆT NAM</span>",
+                hero_btn: "Khám Phá Ngay",
+                
+                // TOC
+                toc_title: "MỤC LỤC",
+                toc_01: "Giới thiệu doanh nghiệp",
+                toc_02: "Tầm nhìn - Sứ mệnh - Giá trị cốt lõi",
+                toc_03: "Lĩnh vực kinh doanh - Danh mục sản phẩm",
+                toc_04: "Thế mạnh của Taya Food",
+                toc_05: "Trang thiết bị và máy móc",
+                toc_06: "Giấy chứng nhận ISO 22000:2018",
+                
+                // Section 01: Intro
+                intro_title: "GIỚI THIỆU DOANH NGHIỆP",
+                intro_history: "Lịch sử hình thành",
+                intro_2018: "Thành lập TAYA FOOD với mục tiêu phân phối gia vị hàng đầu nội địa.",
+                intro_2020: "Mở rộng nhà xưởng sản xuất nông sản tẩm gia vị (hạt điều, đậu phộng) xuất khẩu.",
+                intro_2022: "Đầu tư mạnh mẽ vào dòng sản phẩm gia vị - xốt chuyên biệt cho FMCG và F&B.",
+                intro_now_year: "Hiện nay",
+                intro_now: "Nhà sản xuất gia công OEM đáng tin cậy cho nhiều thương hiệu trong và ngoài nước.",
+                
+                // Section 02: Vision
+                vision_title: "TẦM NHÌN - SỨ MỆNH<br>GIÁ TRỊ CỐT LÕI",
+                vision_vision: "Tầm nhìn",
+                vision_vision_text: "Trở thành đối tác chiến lược hàng đầu trong lĩnh vực gia vị và thực phẩm tiện lợi, nguồn cung ổn định cho ngành thực phẩm Việt Nam.",
+                vision_mission: "Sứ mệnh",
+                vision_mission_text: "Cung cấp giải pháp sản xuất tối ưu, giúp đối tác rút ngắn thời gian đưa sản phẩm ra thị trường với chi phí hợp lý và chất lượng ổn định.",
+                vision_core: "Giá trị cốt lõi",
+                core_quality: "Chất lượng:",
+                core_quality_desc: "Đặt lên hàng đầu.",
+                core_integrity: "Chính trực:",
+                core_integrity_desc: "Minh bạch, nhất quán.",
+                core_respect: "Tôn trọng:",
+                core_respect_desc: "Lắng nghe, thấu hiểu.",
+                core_responsibility: "Trách nhiệm:",
+                core_responsibility_desc: "Vì khách hàng và xã hội.",
+                core_trust: "Tin tưởng:",
+                core_trust_desc: "Hợp tác bằng uy tín.",
+                
+                // Section 03: Products
+                products_title: "LĨNH VỰC KINH DOANH<br>DANH MỤC SẢN PHẨM",
+                business_areas: "Lĩnh vực kinh doanh",
+                biz_sauce: "Sản xuất nước xốt",
+                biz_powder: "Sản xuất gia vị dạng bột",
+                biz_oem: "Gia công, đóng gói theo yêu cầu (OEM)",
+                biz_fb: "Cung cấp nguyên liệu cho chuỗi F&B",
+                biz_fmcg: "Cung cấp nguyên liệu cho doanh nghiệp FMCG",
+                product_catalog: "Danh mục sản phẩm",
+                prod_seasoning: "Gia vị rắc tẩm",
+                prod_seasoning_desc: "Dùng cho snack, khoai tây chiên, gà rán...",
+                prod_soup: "Gia vị bột soup",
+                prod_soup_desc: "Dùng cho các loại mì, phở ăn liền",
+                prod_sauce: "Gia vị xốt",
+                prod_sauce_desc: "Dùng để chấm, tẩm ướp, nấu nước lẩu",
+                
+                // Section 04: Strengths
+                strengths_title: "THẾ MẠNH CỦA TAYA FOOD",
+                strength_1_title: "Năng lực R&D<br>Sản phẩm chuyên sâu",
+                strength_1_desc: "R&D là nền tảng cốt lõi để phát triển các dòng gia vị - xốt độc đáo, phù hợp với thị hiếu đa dạng và các xu hướng ẩm thực hiện đại.",
+                strength_2_title: "Sản xuất linh hoạt<br>Đơn hàng mẫu",
+                strength_2_desc: "Hỗ trợ các doanh nghiệp thử nghiệm dòng sản phẩm mới trên thị trường với quy trình sản xuất linh hoạt cùng chi phí hợp lý.",
+                strength_3_title: "Đề cao tính<br>Đổi mới sáng tạo",
+                strength_3_desc: "Chủ động cải tiến công nghệ, quy trình để đáp ứng các yêu cầu đặc thù của từng ngành hàng. Cập nhật liên tục xu hướng tiêu dùng.",
+                
+                // Section 05: Equipment
+                equipment_title: "TRANG THIẾT BỊ - MÁY MÓC",
+                equipment_intro: "TAYA FOOD sở hữu hệ thống thiết bị sản xuất hiện đại, tối ưu hóa nhằm đảm bảo năng suất vượt trội, chất lượng sản phẩm ổn định và đáp ứng đa dạng nhu cầu thị trường.",
+                equip_powder_line: "Dây chuyền đóng gói gia vị dạng bột",
+                equip_sauce_line: "Dây chuyền đóng gói gia vị dạng xốt",
+                equip_capacity: "Công suất 2 tấn/ngày",
+                equip_powder_desc: "Hệ thống tự động, đảm bảo quy trình đóng gói diễn ra nhanh chóng, chính xác và vệ sinh. Đáp ứng kịp thời các đơn hàng số lượng lớn.",
+                equip_sauce_desc: "Máy móc chuyên dụng để chiết rót các sản phẩm dạng lỏng nhanh chóng. Cam kết đồng đều tiêu chuẩn và chất lượng ổn định.",
+                
+                // Section 06: ISO
+                iso_title: "GIẤY CHỨNG NHẬN ISO 22000:2018",
+                iso_commitment: "CAM KẾT CHẤT LƯỢNG",
+                iso_desc: "Hệ thống quản lý an toàn thực phẩm của Taya Food được chứng nhận phù hợp với yêu cầu của tiêu chuẩn ISO 22000:2018 cho các phạm vi:",
+                iso_scope_1: "Sản xuất nước xốt",
+                iso_scope_2: "Sản xuất các loại gia vị dạng bột",
+                iso_scope_3: "Chế biến các loại hạt tẩm gia vị",
+                iso_scope_4: "Đóng gói thực phẩm khô",
+                
+                // Contact
+                contact_title: "THÔNG TIN LIÊN HỆ",
+                contact_hq: "Trụ sở chính",
+                contact_factory: "Xưởng sản xuất",
+                
+                // Footer
+                footer_copyright: "&copy; 2025 CÔNG TY TNHH THỰC PHẨM TAYA VIỆT NAM.",
+                footer_rights: "All Rights Reserved."
+            },
+            en: {
+                // Navigation
+                nav_intro: "About Us",
+                nav_vision: "Vision",
+                nav_products: "Products",
+                nav_strengths: "Strengths",
+                nav_equipment: "Equipment",
+                nav_contact: "Contact",
+                download_profile: "Download Profile",
+                
+                // Hero
+                hero_subtitle: "COMPANY PROFILE",
+                hero_title: "TAYA VIETNAM <span>FOOD CO., LTD</span>",
+                hero_btn: "Explore Now",
+                
+                // TOC
+                toc_title: "TABLE OF CONTENTS",
+                toc_01: "Company Introduction",
+                toc_02: "Vision - Mission - Core Values",
+                toc_03: "Business Areas - Product Catalog",
+                toc_04: "Taya Food's Strengths",
+                toc_05: "Equipment & Machinery",
+                toc_06: "ISO 22000:2018 Certification",
+                
+                // Section 01: Intro
+                intro_title: "COMPANY INTRODUCTION",
+                intro_history: "Company History",
+                intro_2018: "Established TAYA FOOD with the goal of becoming a leading domestic seasoning distributor.",
+                intro_2020: "Expanded production facilities for seasoned agricultural products (cashews, peanuts) for export.",
+                intro_2022: "Invested heavily in specialized seasoning and sauce product lines for FMCG and F&B sectors.",
+                intro_now_year: "Present",
+                intro_now: "A reliable OEM manufacturer for numerous domestic and international brands.",
+                
+                // Section 02: Vision
+                vision_title: "VISION - MISSION<br>CORE VALUES",
+                vision_vision: "Vision",
+                vision_vision_text: "To become a leading strategic partner in the seasoning and convenience food industry, a stable supply source for Vietnam's food sector.",
+                vision_mission: "Mission",
+                vision_mission_text: "Provide optimal production solutions to help partners shorten time-to-market with reasonable costs and consistent quality.",
+                vision_core: "Core Values",
+                core_quality: "Quality:",
+                core_quality_desc: "Always comes first.",
+                core_integrity: "Integrity:",
+                core_integrity_desc: "Transparent and consistent.",
+                core_respect: "Respect:",
+                core_respect_desc: "Listen and understand.",
+                core_responsibility: "Responsibility:",
+                core_responsibility_desc: "For customers and society.",
+                core_trust: "Trust:",
+                core_trust_desc: "Partnership through credibility.",
+                
+                // Section 03: Products
+                products_title: "BUSINESS AREAS<br>PRODUCT CATALOG",
+                business_areas: "Business Areas",
+                biz_sauce: "Sauce Production",
+                biz_powder: "Powder Seasoning Production",
+                biz_oem: "OEM Processing & Packaging",
+                biz_fb: "Raw Materials for F&B Chains",
+                biz_fmcg: "Raw Materials for FMCG Companies",
+                product_catalog: "Product Catalog",
+                prod_seasoning: "Seasoning Powder",
+                prod_seasoning_desc: "For snacks, french fries, fried chicken...",
+                prod_soup: "Soup Powder",
+                prod_soup_desc: "For instant noodles, pho",
+                prod_sauce: "Sauce Seasoning",
+                prod_sauce_desc: "For dipping, marinating, hot pot broth",
+                
+                // Section 04: Strengths
+                strengths_title: "TAYA FOOD'S STRENGTHS",
+                strength_1_title: "R&D Capability<br>Specialized Products",
+                strength_1_desc: "R&D is the core foundation for developing unique seasoning and sauce lines that match diverse tastes and modern culinary trends.",
+                strength_2_title: "Flexible Production<br>Sample Orders",
+                strength_2_desc: "Supporting businesses to test new product lines in the market with flexible production processes and reasonable costs.",
+                strength_3_title: "Emphasis on<br>Innovation",
+                strength_3_desc: "Proactively improving technology and processes to meet specific requirements of each industry. Continuously updating consumer trends.",
+                
+                // Section 05: Equipment
+                equipment_title: "EQUIPMENT & MACHINERY",
+                equipment_intro: "TAYA FOOD owns a modern production equipment system, optimized to ensure outstanding productivity, stable product quality and meet diverse market demands.",
+                equip_powder_line: "Powder Seasoning Packaging Line",
+                equip_sauce_line: "Sauce Seasoning Packaging Line",
+                equip_capacity: "Capacity: 2 tons/day",
+                equip_powder_desc: "Automated system ensuring fast, accurate and hygienic packaging processes. Meeting large order quantities on time.",
+                equip_sauce_desc: "Specialized machinery for quick liquid product filling. Committed to consistent standards and stable quality.",
+                
+                // Section 06: ISO
+                iso_title: "ISO 22000:2018 CERTIFICATION",
+                iso_commitment: "QUALITY COMMITMENT",
+                iso_desc: "Taya Food's food safety management system is certified to comply with ISO 22000:2018 requirements for the following scopes:",
+                iso_scope_1: "Sauce Production",
+                iso_scope_2: "Powder Seasoning Production",
+                iso_scope_3: "Seasoned Nut Processing",
+                iso_scope_4: "Dry Food Packaging",
+                
+                // Contact
+                contact_title: "CONTACT INFORMATION",
+                contact_hq: "Headquarters",
+                contact_factory: "Production Factory",
+                
+                // Footer
+                footer_copyright: "&copy; 2025 TAYA VIETNAM FOOD CO., LTD.",
+                footer_rights: "All Rights Reserved."
+            }
+            // Thêm các ngôn ngữ khác tại đây:
+            // zh: { ... },  // Tiếng Trung
+            // ja: { ... },  // Tiếng Nhật
+            // ko: { ... },  // Tiếng Hàn
+        };
+
+        let currentLang = localStorage.getItem('lang') || 'vi';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            document.documentElement.lang = lang;
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            
+            // Update active button state
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage(currentLang);
+            
+            // Language switcher click handlers
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const lang = btn.getAttribute('data-lang');
+                    setLanguage(lang);
+                });
+            });
         });
 
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
+        // ==========================================
+        // MOBILE MENU LOGIC - FIXED VERSION
+        // ==========================================
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.getElementById('navLinks');
+        const header = document.querySelector('#header');
+        
+        let isMenuOpen = false;
+
+        function toggleMenu(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            isMenuOpen = !isMenuOpen;
+            navLinks.classList.toggle('active', isMenuOpen);
+            menuToggle.innerHTML = isMenuOpen 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        }
+
+        function closeMenu() {
+            isMenuOpen = false;
+            navLinks.classList.remove('active');
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+
+        // Touch and click event for menu toggle
+        menuToggle.addEventListener('click', toggleMenu);
+        menuToggle.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            toggleMenu(e);
+        }, { passive: false });
+
+        // Close menu when clicking a nav link
+        navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth < 768) {
-                    navLinks.classList.remove('active');
-                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    closeMenu();
                 }
             });
         });
         
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
-                navLinks.classList.remove('active');
-                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            if (isMenuOpen && !menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        document.addEventListener('touchend', (e) => {
+            if (isMenuOpen && !menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                closeMenu();
             }
         });
         
