@@ -103,7 +103,8 @@ const en = {
     
     // Footer
     footer_copyright: "&copy; 2025 TAYA VIETNAM FOOD CO., LTD.",
-    footer_rights: "All Rights Reserved."
+    footer_rights: "All Rights Reserved.",
+    footer_privacy: "Privacy Policy"
 };
 
 // Register to global i18n object

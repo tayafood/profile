@@ -103,7 +103,8 @@ const vi = {
     
     // Footer
     footer_copyright: "&copy; 2025 CÔNG TY TNHH THỰC PHẨM TAYA VIỆT NAM.",
-    footer_rights: "All Rights Reserved."
+    footer_rights: "All Rights Reserved.",
+    footer_privacy: "Chính sách bảo mật"
 };
 
 // Register to global i18n object

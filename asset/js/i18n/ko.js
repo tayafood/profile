@@ -103,7 +103,8 @@ const ko = {
     
     // Footer
     footer_copyright: "&copy; 2025 TAYA 베트남 식품 유한회사",
-    footer_rights: "모든 권리 보유"
+    footer_rights: "모든 권리 보유",
+    footer_privacy: "개인정보 처리방침"
 };
 
 // Register to global i18n object

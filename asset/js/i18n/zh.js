@@ -103,7 +103,8 @@ const zh = {
     
     // Footer
     footer_copyright: "&copy; 2025 TAYA越南食品有限公司",
-    footer_rights: "版权所有"
+    footer_rights: "版权所有",
+    footer_privacy: "隐私政策"
 };
 
 // Register to global i18n object

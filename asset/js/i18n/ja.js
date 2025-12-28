@@ -103,7 +103,8 @@ const ja = {
     
     // Footer
     footer_copyright: "&copy; 2025 TAYAベトナムフード株式会社",
-    footer_rights: "全著作権所有"
+    footer_rights: "全著作権所有",
+    footer_privacy: "プライバシーポリシー"
 };
 
 // Register to global i18n object

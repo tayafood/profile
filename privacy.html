@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chính Sách Bảo Mật | TAYA FOOD</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Chính sách bảo mật và quyền riêng tư của TAYA FOOD. Cam kết bảo vệ thông tin khách hàng và đối tác.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tayafood.com/privacy.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./asset/favicon.png">
+    <link rel="apple-touch-icon" href="./asset/favicon.png">
+    
+    <!-- Import Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Import Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-red: #D71920;
+            --primary-hover: #b9151b;
+            --text-dark: #1F2937;
+            --text-gray: #4B5563;
+            --bg-white: #FFFFFF;
+            --bg-light: #F3F4F6;
+            --font-main: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-main);
+            color: var(--text-dark);
+            line-height: 1.8;
+            background-color: var(--bg-light);
+        }
+
+        a { color: var(--primary-red); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Header */
+        .header {
+            background: var(--primary-red);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .logo-link img {
+            height: 50px;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content-box {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            font-size: 28px;
+            color: var(--primary-red);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .last-updated {
+            color: var(--text-gray);
+            font-size: 14px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: var(--text-dark);
+            margin: 30px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--primary-red);
+            font-size: 18px;
+        }
+
+        p, li {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+        }
+
+        ul {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background: #FEF2F2;
+            border-left: 4px solid var(--primary-red);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: var(--text-dark);
+        }
+
+        .contact-info {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .contact-info h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: var(--text-gray);
+        }
+
+        .contact-item i {
+            color: var(--primary-red);
+            width: 20px;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            color: var(--primary-red);
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        .footer {
+            background: #111;
+            color: #888;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 5px solid var(--primary-red);
+        }
+
+        .footer p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .content-box {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="./index.html" class="logo-link">
+                <img src="./asset/tayafood-logo-logan_transparent.PNG" alt="TAYA FOOD Logo">
+                <span>TAYA FOOD</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <a href="./index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Quay lại trang chủ
+        </a>
+
+        <div class="content-box">
+            <h1><i class="fas fa-shield-alt"></i> Chính Sách Bảo Mật</h1>
+            <p class="last-updated">Cập nhật lần cuối: 28/12/2025</p>
+
+            <p>
+                <strong>Công ty TNHH Thực Phẩm TAYA Việt Nam</strong> ("TAYA FOOD", "chúng tôi") cam kết bảo vệ quyền riêng tư 
+                và thông tin cá nhân của khách hàng, đối tác khi truy cập và sử dụng website của chúng tôi.
+            </p>
+
+            <!-- Section 1 -->
+            <h2><i class="fas fa-database"></i> 1. Thu Thập Thông Tin</h2>
+            <p>Chúng tôi thu thập thông tin trong các trường hợp sau:</p>
+            <ul>
+                <li><strong>Thông tin bạn cung cấp:</strong> Khi bạn chủ động liên hệ với chúng tôi qua form liên hệ, email, 
+                    hoặc số điện thoại, chúng tôi sẽ thu thập các thông tin như họ tên, email, số điện thoại, và nội dung tin nhắn.</li>
+                <li><strong>Cookie và dữ liệu ẩn danh:</strong> Website sử dụng cookie để đo lường lượng truy cập, phân tích 
+                    hành vi người dùng nhằm cải thiện trải nghiệm. Dữ liệu này hoàn toàn ẩn danh và không định danh cá nhân.</li>
+                <li><strong>Thông tin kỹ thuật:</strong> Địa chỉ IP, loại trình duyệt, thiết bị truy cập được thu thập tự động 
+                    để đảm bảo bảo mật và tối ưu hiển thị website.</li>
+            </ul>
+
+            <!-- Section 2 -->
+            <h2><i class="fas fa-cogs"></i> 2. Sử Dụng Thông Tin</h2>
+            <p>Thông tin thu thập được sử dụng với các mục đích:</p>
+            <ul>
+                <li>Phản hồi yêu cầu tư vấn sản phẩm, dịch vụ của bạn</li>
+                <li>Gửi báo giá, thông tin sản phẩm theo yêu cầu</li>
+                <li>Cải thiện chất lượng website và dịch vụ khách hàng</li>
+                <li>Phân tích xu hướng truy cập để tối ưu nội dung</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong><i class="fas fa-ban"></i> Cam kết:</strong> Chúng tôi <u>KHÔNG</u> bán, trao đổi hoặc chia sẻ 
+                    thông tin cá nhân của bạn cho bất kỳ bên thứ ba nào vì mục đích thương mại.</p>
+            </div>
+
+            <!-- Section 3 -->
+            <h2><i class="fas fa-lock"></i> 3. Bảo Mật Thông Tin</h2>
+            <p>TAYA FOOD cam kết:</p>
+            <ul>
+                <li>Áp dụng các biện pháp kỹ thuật và tổ chức phù hợp để bảo vệ thông tin khỏi truy cập trái phép, 
+                    mất mát hoặc tiết lộ</li>
+                <li>Giới hạn quyền truy cập thông tin chỉ cho nhân viên được ủy quyền</li>
+                <li>Tuân thủ các quy định về bảo mật thông tin theo pháp luật Việt Nam</li>
+                <li>Bảo mật tuyệt đối thông tin đối tác, công thức sản phẩm OEM</li>
+            </ul>
+
+            <!-- Section 4 -->
+            <h2><i class="fas fa-cookie-bite"></i> 4. Chính Sách Cookie</h2>
+            <p>Website sử dụng cookie để:</p>
+            <ul>
+                <li>Ghi nhớ ngôn ngữ bạn đã chọn</li>
+                <li>Đo lường lượng truy cập (Google Analytics)</li>
+                <li>Hiển thị nội dung phù hợp</li>
+            </ul>
+            <p>Bạn có thể tắt cookie trong cài đặt trình duyệt, tuy nhiên một số tính năng của website có thể bị ảnh hưởng.</p>
+
+            <!-- Section 5 -->
+            <h2><i class="fas fa-user-edit"></i> 5. Quyền Của Bạn</h2>
+            <p>Bạn có quyền:</p>
+            <ul>
+                <li>Yêu cầu truy cập thông tin cá nhân chúng tôi lưu trữ về bạn</li>
+                <li>Yêu cầu chỉnh sửa hoặc xóa thông tin cá nhân</li>
+                <li>Từ chối nhận email marketing (nếu có)</li>
+                <li>Khiếu nại về việc xử lý dữ liệu</li>
+            </ul>
+
+            <!-- Section 6 -->
+            <h2><i class="fas fa-sync-alt"></i> 6. Cập Nhật Chính Sách</h2>
+            <p>
+                Chính sách bảo mật này có thể được cập nhật theo thời gian. Mọi thay đổi sẽ được đăng tải trên trang này 
+                với ngày cập nhật mới. Chúng tôi khuyến khích bạn xem lại chính sách định kỳ.
+            </p>
+
+            <!-- Contact -->
+            <div class="contact-info">
+                <h3><i class="fas fa-headset"></i> Liên Hệ Về Chính Sách Bảo Mật</h3>
+                <p>Nếu bạn có bất kỳ thắc mắc nào về chính sách bảo mật, vui lòng liên hệ:</p>
+                <div class="contact-item">
+                    <i class="fas fa-building"></i>
+                    <span><strong>Công ty TNHH Thực Phẩm TAYA Việt Nam</strong></span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>5C2 Hòa Bình, Phường Bình Thới, Quận 11, TP. Hồ Chí Minh</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:anmtt@tayafood.com">anmtt@tayafood.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:0938163038">0938 163 038</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 CÔNG TY TNHH THỰC PHẨM TAYA VIỆT NAM.</p>
+        <p>All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

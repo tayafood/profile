@@ -103,7 +103,8 @@ const th = {
     
     // Footer
     footer_copyright: "&copy; 2025 บริษัท TAYA เวียดนาม ฟู้ด จำกัด",
-    footer_rights: "สงวนลิขสิทธิ์"
+    footer_rights: "สงวนลิขสิทธิ์",
+    footer_privacy: "นโยบายความเป็นส่วนตัว"
 };
 
 // Register to global i18n object
