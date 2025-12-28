@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ Sơ Năng Lực - TAYA FOOD</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./asset/favicon.png">
+    <link rel="apple-touch-icon" href="./asset/favicon.png">
+    
+    <!-- Import Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Import Google Fonts: Be Vietnam Pro (tối ưu tiếng Việt) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    /* --- 1. VARIABLES & RESET --- */
+    :root {
+        --primary-red: #D71920; /* Màu đỏ thương hiệu TAYA */
+        --primary-hover: #b9151b;
+        --primary-light: rgba(215, 25, 32, 0.1);
+        --text-dark: #1F2937;
+        --text-gray: #4B5563;
+        --text-light: #F9FAFB;
+        --bg-white: #FFFFFF;
+        --bg-light: #F3F4F6;
+        --font-main: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+        font-family: var(--font-main);
+        color: var(--text-dark);
+        line-height: 1.7;
+        background-color: var(--bg-white);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+
+    a { 
+        text-decoration: none; 
+        color: inherit; 
+        transition: var(--transition);
+    }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    
+    /* Cải thiện selection */
+    ::selection {
+        background-color: var(--primary-red);
+        color: white;
+    }
+
+    /* --- 2. HEADER & NAVIGATION --- */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.98);
+        z-index: 1000;
+        box-shadow: var(--shadow-md);
+        padding: 15px 0;
+        transition: padding 0.3s;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .nav-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        font-size: 24px;
+        color: var(--primary-red);
+        letter-spacing: -0.5px;
+    }
+    
+    .logo-img {
+        height: 70px;
+        width: auto;
+        object-fit: contain;
+        /* Xử lý nền logo trong suốt để khớp với header */
+        background-color: transparent;
+        mix-blend-mode: multiply;
+    }
+    
+    .nav-links { 
+        display: none; 
+    }
+    
+    .nav-links a {
+        position: relative;
+        padding: 8px 0;
+        color: var(--text-dark);
+        font-weight: 500;
+    }
+    
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-red);
+        transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+        color: var(--primary-red);
+    }
+    
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    .btn-contact {
+        background-color: var(--primary-red);
+        color: white;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 14px;
+        transition: var(--transition);
+        border: 2px solid var(--primary-red);
+    }
+
+    .btn-contact:hover {
+        background-color: white;
+        color: var(--primary-red);
+    }
+
+    .menu-toggle {
+        font-size: 24px;
+        color: var(--text-dark);
+        cursor: pointer;
+        display: block;
+    }
+
+    /* --- 3. HERO SECTION --- */
+    .hero {
+        position: relative;
+        height: 90vh;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), 
+                    url('./asset/images/TAYAFOOD-01.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: white;
+        text-align: center;
+        padding-top: 80px;
+    }
+
+    .hero-content {
+        max-width: 900px;
+        padding: 0 20px;
+        animation: fadeUp 1s ease-out;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 15px;
+        color: #ddd;
+        font-weight: 600;
+    }
+
+    .hero-title {
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+    
+    .hero-title span {
+        color: var(--primary-red);
+        display: block;
+        font-size: 1.2em;
+        margin-top: 10px;
+    }
+
+    .hero-btn-group {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 40px;
+    }
+
+    .btn {
+        padding: 14px 32px;
+        border-radius: 4px;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 14px;
+        cursor: pointer;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-primary { background-color: var(--primary-red); color: white; border: none; }
+    .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); }
+
+    /* --- GLOBAL SECTION STYLES --- */
+    .section-padding { padding: 80px 0; }
+    
+    .section-tag-wrapper {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 40px;
+    }
+    
+    .section-number-tag {
+        background-color: var(--primary-red);
+        color: white;
+        font-weight: 800;
+        font-size: 24px;
+        padding: 5px 15px;
+        border-radius: 4px;
+        display: inline-block;
+        line-height: 1.2;
+        flex-shrink: 0;
+    }
+    
+    .section-main-title {
+        font-size: 28px;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: var(--text-dark);
+        margin-top: 0;
+        line-height: 1.3;
+    }
+
+    .subsection-header {
+        background-color: var(--primary-red);
+        color: white;
+        padding: 8px 15px;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: inline-block;
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+
+    .red-line-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--primary-red);
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+        display: inline-block;
+    }
+
+    /* --- TOC STYLES --- */
+    .toc-content { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
+    .toc-list { display: flex; flex-direction: column; gap: 15px; }
+    .toc-item {
+        display: flex; align-items: center; background: white; padding: 12px;
+        border-radius: 8px; transition: var(--transition); border: 1px solid #eee;
+    }
+    .toc-item:hover { transform: translateX(10px); border-color: var(--primary-red); }
+    .toc-number {
+        background-color: var(--primary-red); color: white; font-weight: 700;
+        font-size: 16px; width: 35px; height: 35px; display: flex; align-items: center;
+        justify-content: center; border-radius: 4px; margin-right: 15px;
+    }
+    .toc-text { font-weight: 600; font-size: 14px; color: var(--text-dark); text-transform: uppercase; }
+
+    /* --- SECTION 01 & 02 Styles --- */
+    .timeline { position: relative; padding-left: 30px; border-left: 2px solid #e5e7eb; }
+    .timeline-item { position: relative; margin-bottom: 30px; }
+    .timeline-marker {
+        position: absolute; left: -39px; top: 0; width: 16px; height: 16px;
+        border-radius: 50%; background-color: var(--bg-light); border: 4px solid var(--primary-red);
+    }
+    .timeline-year {
+        display: inline-block; background-color: var(--primary-red); color: white;
+        font-weight: 700; padding: 4px 12px; border-radius: 4px; margin-bottom: 10px; font-size: 14px;
+    }
+    
+    /* --- SECTION 03: BUSINESS & PRODUCTS --- */
+    .business-areas-list {
+        list-style: none;
+        margin-bottom: 50px;
+    }
+    .business-areas-list li {
+        font-size: 16px;
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .business-areas-list li::before {
+        content: '\f00c';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        color: var(--primary-red);
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .product-card {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        text-align: center;
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+    }
+    .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+    
+    .product-img-wrap {
+        padding: 30px;
+        background: white;
+        display: flex;
+        justify-content: center;
+        flex-grow: 1;
+    }
+    .product-img-wrap img {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 50%; /* Make imagery circular like PDF */
+        border: 4px solid #eee;
+    }
+    
+    .product-footer {
+        background-color: var(--primary-red);
+        color: white;
+        padding: 20px 15px;
+    }
+    .product-title {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+    .product-desc {
+        font-size: 13px;
+        opacity: 0.9;
+    }
+
+    /* --- SECTION 04: STRENGTHS --- */
+    .strength-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .strength-card {
+        background: white;
+        box-shadow: var(--shadow-md);
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    .strength-header {
+        background-color: var(--primary-red);
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    .strength-header h3 { font-size: 18px; font-weight: 700; text-transform: uppercase; line-height: 1.4; }
+    .strength-body { padding: 25px; font-size: 15px; color: var(--text-gray); text-align: justify; flex-grow: 1; }
+    
+    /* --- SECTION 05: EQUIPMENT --- */
+    .equipment-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+    .equipment-item {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+    }
+    .equipment-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+    .equipment-info { padding: 25px; }
+    .capacity-tag {
+        color: var(--primary-red);
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 10px;
+        display: block;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+    }
+
+    /* --- SECTION 06: ISO --- */
+    .iso-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        text-align: center;
+    }
+    .iso-frame {
+        border: 10px solid #eee;
+        padding: 10px;
+        background: white;
+        box-shadow: var(--shadow-lg);
+        max-width: 500px;
+        width: 100%;
+    }
+
+    /* --- CONTACT --- */
+    .contact-wrapper { display: grid; grid-template-columns: 1fr; gap: 30px; }
+    .contact-info-box {
+        background: linear-gradient(135deg, var(--primary-red) 0%, #a31217 100%);
+        color: white; padding: 40px; border-radius: 12px;
+    }
+    .info-item { display: flex; margin-bottom: 25px; gap: 15px; }
+    .info-icon {
+        width: 40px; height: 40px; background: rgba(255,255,255,0.2);
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+    }
+    
+    .contact-link {
+        color: white;
+        transition: var(--transition);
+        display: inline-block;
+    }
+    
+    .contact-link:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+    }
+    
+    /* Footer styles */
+    footer {
+        background: #111;
+        color: #888;
+        padding: 30px 0;
+        text-align: center;
+        border-top: 5px solid var(--primary-red);
+    }
+    
+    footer p {
+        font-size: 14px;
+    }
+    
+    /* Scroll to top button */
+    .scroll-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary-red);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        box-shadow: var(--shadow-lg);
+        z-index: 999;
+    }
+    
+    .scroll-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .scroll-top:hover {
+        background-color: var(--primary-hover);
+        transform: translateY(-3px);
+    }
+
+    /* --- KEYFRAMES --- */
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+
+    /* --- RESPONSIVE --- */
+    /* Mobile First - Base styles already defined above */
+    
+    /* Small devices (landscape phones, 576px and up) */
+    @media (min-width: 576px) {
+        .hero-title { font-size: 44px; }
+        .section-main-title { font-size: 26px; }
+        .products-grid { grid-template-columns: repeat(2, 1fr); }
+        .strength-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    /* Medium devices (tablets, 768px and up) */
+    @media (min-width: 768px) {
+        html { font-size: 16px; }
+        .nav-links { 
+            display: flex; 
+            gap: 20px; 
+            font-weight: 500; 
+            font-size: 14px; 
+        }
+        .menu-toggle { display: none; }
+        .hero-title { font-size: 52px; }
+        .hero { min-height: 650px; }
+        
+        .toc-content { grid-template-columns: 1fr 1fr; }
+        .toc-list { order: 1; } 
+        .toc-image { order: 2; }
+        
+        .timeline-grid { 
+            display: grid; 
+            grid-template-columns: 1.2fr 0.8fr; 
+            gap: 40px; 
+        }
+        .vision-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 40px; 
+            align-items: center; 
+        }
+        
+        .products-grid { grid-template-columns: repeat(3, 1fr); }
+        .strength-grid { grid-template-columns: repeat(3, 1fr); }
+        .equipment-grid { grid-template-columns: 1fr 1fr; }
+        .contact-wrapper { grid-template-columns: 1fr 1fr; }
+        
+        .iso-container { 
+            flex-direction: row; 
+            text-align: left; 
+            justify-content: center; 
+        }
+        
+        .section-padding { padding: 100px 0; }
+    }
+
+    /* Large devices (desktops, 1024px and up) */
+    @media (min-width: 1024px) {
+        html { font-size: 17px; }
+        .nav-links { gap: 30px; font-size: 15px; }
+        .hero-title { font-size: 60px; }
+        .section-main-title { font-size: 32px; }
+        .container { padding: 0 40px; }
+    }
+    
+    /* Extra large devices (large desktops, 1200px and up) */
+    @media (min-width: 1200px) {
+        .container { max-width: 1200px; padding: 0 20px; }
+        .hero-title { font-size: 64px; }
+    }
+    
+    /* Mobile menu improvements */
+    @media (max-width: 767px) {
+        .hero { 
+            height: auto; 
+            min-height: 100vh; 
+            background-attachment: scroll; /* Better performance on mobile */
+        }
+        .hero-title { font-size: 32px; }
+        .hero-subtitle { font-size: 14px; letter-spacing: 2px; }
+        .section-padding { padding: 60px 0; }
+        .section-main-title { font-size: 22px; }
+        .btn-contact { 
+            padding: 8px 16px; 
+            font-size: 12px; 
+        }
+        .logo-img { height: 35px; }
+        
+        /* Mobile nav dropdown styles */
+        .nav-links.active {
+            display: flex !important;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 20px;
+            box-shadow: var(--shadow-lg);
+            gap: 0;
+        }
+        
+        .nav-links.active a {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: block;
+        }
+        
+        .nav-links.active a:last-child {
+            border-bottom: none;
+        }
+        
+        .nav-links.active a:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .nav-links.active a::after {
+            display: none;
+        }
+        
+        /* Contact info responsive */
+        .contact-info-box { padding: 25px; }
+        .info-item { flex-direction: column; text-align: center; gap: 10px; }
+    }
+</style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <img src="./asset/tayafood-logo-logan_transparent.PNG" alt="TAYA FOOD Logo" class="logo-img">
+            </a>
+            <nav class="nav-links">
+                <a href="#intro">Giới thiệu</a>
+                <a href="#vision">Tầm nhìn</a>
+                <a href="#products">Sản phẩm</a>
+                <a href="#strengths">Thế mạnh</a>
+                <a href="#equipment">Thiết bị</a>
+                <a href="#contact">Liên hệ</a>
+            </nav>
+            <a href="./asset/TAYAFOOD_PROFILE.pdf" download class="btn-contact"><i class="fas fa-file-download" target="_blank"></i> Tải Hồ Sơ</a>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">HỒ SƠ NĂNG LỰC DOANH NGHIỆP</p>
+            <h1 class="hero-title">CÔNG TY TNHH THỰC PHẨM <span>TAYA VIỆT NAM</span></h1>
+            <p style="font-size: 20px; margin-bottom: 30px; font-style: italic;">"ready to eat, ready to use"</p>
+            <div class="hero-btn-group">
+                <a href="#intro" class="btn btn-primary">Khám Phá Ngay</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOC -->
+    <section class="section-padding" style="background: white;">
+        <div class="container">
+            <div class="section-tag-wrapper">
+                <h2 class="section-main-title" style="border-left: 5px solid var(--primary-red); padding-left: 15px;">MỤC LỤC</h2>
+            </div>
+            <div class="toc-content">
+                <div class="toc-list">
+                    <a href="#intro" class="toc-item"><span class="toc-number">01</span><span class="toc-text">Giới thiệu doanh nghiệp</span></a>
+                    <a href="#vision" class="toc-item"><span class="toc-number">02</span><span class="toc-text">Tầm nhìn - Sứ mệnh - Giá trị cốt lõi</span></a>
+                    <a href="#products" class="toc-item"><span class="toc-number">03</span><span class="toc-text">Lĩnh vực kinh doanh - Danh mục sản phẩm</span></a>
+                    <a href="#strengths" class="toc-item"><span class="toc-number">04</span><span class="toc-text">Thế mạnh của Taya Food</span></a>
+                    <a href="#equipment" class="toc-item"><span class="toc-number">05</span><span class="toc-text">Trang thiết bị và máy móc</span></a>
+                    <a href="#cert" class="toc-item"><span class="toc-number">06</span><span class="toc-text">Giấy chứng nhận ISO 22000:2018</span></a>
+                </div>
+                <div class="toc-image">
+                    <img src="./asset/images/TAYAFOOD-02.png" style="border-radius: 12px; box-shadow: var(--shadow-lg);" alt="Factory Worker">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 01: INTRO -->
+    <section id="intro" class="section-padding" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="section-tag-wrapper">
+                <div class="section-number-tag">01</div>
+                <h2 class="section-main-title">GIỚI THIỆU DOANH NGHIỆP</h2>
+            </div>
+            <div class="timeline-grid">
+                <div>
+                    <h3 class="red-line-title">Lịch sử hình thành</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div><span class="timeline-year">2018</span>
+                            <p style="font-size:14px;">Thành lập TAYA FOOD với mục tiêu phân phối gia vị hàng đầu nội địa.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div><span class="timeline-year">2020</span>
+                            <p style="font-size:14px;">Mở rộng nhà xưởng sản xuất nông sản tẩm gia vị (hạt điều, đậu phộng) xuất khẩu.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div><span class="timeline-year">2022</span>
+                            <p style="font-size:14px;">Đầu tư mạnh mẽ vào dòng sản phẩm gia vị - xốt chuyên biệt cho FMCG và F&B.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div><span class="timeline-year">Hiện nay</span>
+                            <p style="font-size:14px;">Nhà sản xuất gia công OEM đáng tin cậy cho nhiều thương hiệu trong và ngoài nước.</p>
+                        </div>
+                    </div>
+                </div>
+                <img src="./asset/images/TAYAFOOD-03.png" style="border-radius:12px; height:100%; object-fit:cover;" alt="Machinery">
+            </div>
+        </div>
+    </section>
+
+    <!-- 02: VISION -->
+    <section id="vision" class="section-padding">
+        <div class="container">
+            <div class="section-tag-wrapper">
+                <div class="section-number-tag">02</div>
+                <h2 class="section-main-title">TẦM NHÌN - SỨ MỆNH<br>GIÁ TRỊ CỐT LÕI</h2>
+            </div>
+            <div class="vision-grid">
+                <div>
+                    <div style="margin-bottom:20px;">
+                        <span class="subsection-header">Tầm nhìn</span>
+                        <p style="text-align:justify;">Trở thành đối tác chiến lược hàng đầu trong lĩnh vực gia vị và thực phẩm tiện lợi, nguồn cung ổn định cho ngành thực phẩm Việt Nam.</p>
+                    </div>
+                    <div>
+                        <span class="subsection-header">Sứ mệnh</span>
+                        <p style="text-align:justify;">Cung cấp giải pháp sản xuất tối ưu, giúp đối tác rút ngắn thời gian đưa sản phẩm ra thị trường với chi phí hợp lý và chất lượng ổn định.</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="red-line-title">Giá trị cốt lõi</h3>
+                    <ul class="business-areas-list">
+                        <li><strong>Chất lượng:</strong> Đặt lên hàng đầu.</li>
+                        <li><strong>Chính trực:</strong> Minh bạch, nhất quán.</li>
+                        <li><strong>Tôn trọng:</strong> Lắng nghe, thấu hiểu.</li>
+                        <li><strong>Trách nhiệm:</strong> Vì khách hàng và xã hội.</li>
+                        <li><strong>Tin tưởng:</strong> Hợp tác bằng uy tín.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03: BUSINESS & PRODUCTS -->
+    <section id="products" class="section-padding" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="section-tag-wrapper">
+                <div class="section-number-tag">03</div>
+                <h2 class="section-main-title">LĨNH VỰC KINH DOANH<br>DANH MỤC SẢN PHẨM</h2>
+            </div>
+            
+            <div style="margin-bottom: 50px;">
+                <h3 class="subsection-header">Lĩnh vực kinh doanh</h3>
+                <ul class="business-areas-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
+                    <li>Sản xuất nước xốt</li>
+                    <li>Sản xuất gia vị dạng bột</li>
+                    <li>Gia công, đóng gói theo yêu cầu (OEM)</li>
+                    <li>Cung cấp nguyên liệu cho chuỗi F&B</li>
+                    <li>Cung cấp nguyên liệu cho doanh nghiệp FMCG</li>
+                </ul>
+            </div>
+
+            <h3 class="subsection-header">Danh mục sản phẩm</h3>
+            <div class="products-grid">
+                <!-- Card 1 -->
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="./asset/images/TAYAFOOD-17.png" alt="Gia vị rắc tẩm">
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-title">Gia vị rắc tẩm</div>
+                        <div class="product-desc">Dùng cho snack, khoai tây chiên, gà rán...</div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="./asset/images/TAYAFOOD-18.png" alt="Gia vị bột soup">
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-title">Gia vị bột soup</div>
+                        <div class="product-desc">Dùng cho các loại mì, phở ăn liền</div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="./asset/images/TAYAFOOD-19.png" alt="Gia vị xốt">
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-title">Gia vị xốt</div>
+                        <div class="product-desc">Dùng để chấm, tẩm ướp, nấu nước lẩu</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04: STRENGTHS -->
+    <section id="strengths" class="section-padding">
+        <div class="container">
+            <div class="section-tag-wrapper">
+                <div class="section-number-tag">04</div>
+                <h2 class="section-main-title">THẾ MẠNH CỦA TAYA FOOD</h2>
+            </div>
+            
+            <div class="strength-grid">
+                <!-- Strength 1 -->
+                <div class="strength-card">
+                    <div class="strength-header">
+                        <h3>Năng lực R&D<br>Sản phẩm chuyên sâu</h3>
+                    </div>
+                    <div class="strength-body">
+                        <img src="./asset/images/TAYAFOOD-06.png" style="width:100%; height:150px; object-fit:cover; margin-bottom:15px; border-radius:4px;">
+                        <p>R&D là nền tảng cốt lõi để phát triển các dòng gia vị - xốt độc đáo, phù hợp với thị hiếu đa dạng và các xu hướng ẩm thực hiện đại.</p>
+                    </div>
+                </div>
+                <!-- Strength 2 -->
+                <div class="strength-card">
+                    <div class="strength-header">
+                        <h3>Sản xuất linh hoạt<br>Đơn hàng mẫu</h3>
+                    </div>
+                    <div class="strength-body">
+                        <img src="./asset/images/TAYAFOOD-07.png" style="width:100%; height:150px; object-fit:cover; margin-bottom:15px; border-radius:4px;">
+                        <p>Hỗ trợ các doanh nghiệp thử nghiệm dòng sản phẩm mới trên thị trường với quy trình sản xuất linh hoạt cùng chi phí hợp lý.</p>
+                    </div>
+                </div>
+                <!-- Strength 3 -->
+                <div class="strength-card">
+                    <div class="strength-header">
+                        <h3>Đề cao tính<br>Đổi mới sáng tạo</h3>
+                    </div>
+                    <div class="strength-body">
+                        <img src="./asset/images/TAYAFOOD-08.png" style="width:100%; height:150px; object-fit:cover; margin-bottom:15px; border-radius:4px;">
+                        <p>Chủ động cải tiến công nghệ, quy trình để đáp ứng các yêu cầu đặc thù của từng ngành hàng. Cập nhật liên tục xu hướng tiêu dùng.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05: EQUIPMENT -->
+    <section id="equipment" class="section-padding" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="section-tag-wrapper">
+                <div class="section-number-tag">05</div>
+                <h2 class="section-main-title">TRANG THIẾT BỊ - MÁY MÓC</h2>
+            </div>
+            
+            <p style="margin-bottom: 30px; text-align: justify;">TAYA FOOD sở hữu hệ thống thiết bị sản xuất hiện đại, tối ưu hóa nhằm đảm bảo năng suất vượt trội, chất lượng sản phẩm ổn định và đáp ứng đa dạng nhu cầu thị trường.</p>
+
+            <div class="equipment-grid">
+                <!-- Line 1 -->
+                <div class="equipment-item">
+                    <img src="./asset/images/TAYAFOOD-09.png" class="equipment-img" alt="Máy đóng gói bột">
+                    <div class="equipment-info">
+                        <h3 class="red-line-title">Dây chuyền đóng gói gia vị dạng bột</h3>
+                        <span class="capacity-tag">Công suất 2 tấn/ngày</span>
+                        <p>Hệ thống tự động, đảm bảo quy trình đóng gói diễn ra nhanh chóng, chính xác và vệ sinh. Đáp ứng kịp thời các đơn hàng số lượng lớn.</p>
+                    </div>
+                </div>
+                <!-- Line 2 -->
+                <div class="equipment-item">
+                    <img src="./asset/images/TAYAFOOD-10.png" class="equipment-img" alt="Máy đóng gói xốt">
+                    <div class="equipment-info">
+                        <h3 class="red-line-title">Dây chuyền đóng gói gia vị dạng xốt</h3>
+                        <span class="capacity-tag">Công suất 2 tấn/ngày</span>
+                        <p>Máy móc chuyên dụng để chiết rót các sản phẩm dạng lỏng nhanh chóng. Cam kết đồng đều tiêu chuẩn và chất lượng ổn định.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 06: ISO -->
+    <section id="cert" class="section-padding">
+        <div class="container">
+            <div class="section-tag-wrapper">
+                <div class="section-number-tag">06</div>
+                <h2 class="section-main-title">GIẤY CHỨNG NHẬN ISO 22000:2018</h2>
+            </div>
+            
+            <div class="iso-container">
+                <div style="flex: 1;">
+                    <h3 style="font-size:24px; color:var(--primary-red); margin-bottom:20px; font-weight:800;">CAM KẾT CHẤT LƯỢNG</h3>
+                    <p>Hệ thống quản lý an toàn thực phẩm của Taya Food được chứng nhận phù hợp với yêu cầu của tiêu chuẩn ISO 22000:2018 cho các phạm vi:</p>
+                    <ul class="business-areas-list" style="margin-top:20px;">
+                        <li>Sản xuất nước xốt</li>
+                        <li>Sản xuất các loại gia vị dạng bột</li>
+                        <li>Chế biến các loại hạt tẩm gia vị</li>
+                        <li>Đóng gói thực phẩm khô</li>
+                    </ul>
+                </div>
+                <div style="flex: 1; display: flex; justify-content: center;">
+                    <!-- Placeholder for Certificate Image -->
+                    <div class="iso-frame">
+                        <img src="./asset/images/TAYAFOOD_ISO.jpg" alt="Giấy chứng nhận ISO 22000:2018" style="width:100%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section-padding" style="background: white;">
+        <div class="container">
+            <div class="section-tag-wrapper">
+                <h2 class="section-main-title">THÔNG TIN LIÊN HỆ</h2>
+            </div>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info-box">
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <strong style="text-transform:uppercase; font-size:12px; opacity:0.8;">Trụ sở chính</strong>
+                            <p>5C2 Hòa Bình, Phường Bình Thới, TP. Hồ Chí Minh</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-industry"></i></div>
+                        <div>
+                            <strong style="text-transform:uppercase; font-size:12px; opacity:0.8;">Xưởng sản xuất</strong>
+                            <p>815/4/3B Hương Lộ 2, P. Bình Trị Đông, TP. Hồ Chí Minh</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <strong style="text-transform:uppercase; font-size:12px; opacity:0.8;">Hotline</strong>
+                            <a href="tel:0938163038" class="contact-link" style="font-size:18px; font-weight:700; display:block;">0938 163 038</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <strong style="text-transform:uppercase; font-size:12px; opacity:0.8;">Email</strong>
+                            <a href="mailto:anmtt@tayafood.com" class="contact-link">anmtt@tayafood.com</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-globe"></i></div>
+                        <div>
+                            <strong style="text-transform:uppercase; font-size:12px; opacity:0.8;">Website</strong>
+                            <a href="https://tayafood.com" target="_blank" rel="noopener" class="contact-link">tayafood.com</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="background:#eee; min-height:300px; border-radius:12px; overflow:hidden;">
+                    <!-- Placeholder Map -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6644275148816!2d106.6366055!3d10.7603126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752e8255555555%3A0x123456789!2zNV/EmiBIw7ogQsOsbmgsIFBoxrDhu51uZyBCw6xuaCBUaOG7m2ksIFF14bqtbiAxMSwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5o!5e0!3m2!1svi!2s!4v1234567890" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CÔNG TY TNHH THỰC PHẨM TAYA VIỆT NAM.</p> 
+                <p>All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Cuộn lên đầu trang">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Logic
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const header = document.querySelector('#header');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const isActive = navLinks.classList.contains('active');
+            menuToggle.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) {
+                    navLinks.classList.remove('active');
+                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.style.padding = '10px 0';
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+            } else {
+                header.style.padding = '15px 0';
+                header.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+            }
+        });
+        
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scroll for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
