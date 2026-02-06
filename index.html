@@ -68,7 +68,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
     body {
         font-family: var(--font-main);
         color: var(--text-dark);
@@ -185,17 +185,21 @@
     }
 
     .menu-toggle {
-        font-size: 24px;
+        font-size: 20px;
         color: var(--text-dark);
         cursor: pointer;
         display: block;
-        padding: 10px;
-        margin: -10px;
+        padding: 6px;
+        margin: 0;
+        background: none;
+        border: none;
+        outline: none;
         -webkit-tap-highlight-color: transparent;
         touch-action: manipulation;
         user-select: none;
         z-index: 1001;
         position: relative;
+        line-height: 1;
     }
     
     /* Language Switcher Dropdown */
@@ -703,12 +707,23 @@
         html { font-size: 16px; }
         .nav-links { 
             display: flex; 
-            gap: 20px; 
+            gap: 12px; 
             font-weight: 500; 
-            font-size: 14px; 
+            font-size: 12px; 
+        }
+        .nav-links a {
+            white-space: nowrap;
         }
         .menu-toggle { display: none; }
-        .hero-title { font-size: 52px; }
+        .btn-contact {
+            padding: 8px 12px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .btn-contact span { display: none; }
+        .logo-img { height: 40px; }
+        header { padding: 10px 0; }
+        .hero-title { font-size: 48px; }
         .hero { min-height: 650px; }
         
         .toc-content { grid-template-columns: 1fr 1fr; }
@@ -745,6 +760,10 @@
     @media (min-width: 1024px) {
         html { font-size: 17px; }
         .nav-links { gap: 30px; font-size: 15px; }
+        .btn-contact span { display: inline; }
+        .btn-contact { padding: 10px 24px; font-size: 14px; }
+        .logo-img { height: 55px; }
+        header { padding: 15px 0; }
         .hero-title { font-size: 60px; }
         .section-main-title { font-size: 32px; }
         .container { padding: 0 40px; }
@@ -758,32 +777,49 @@
     
     /* Mobile menu improvements */
     @media (max-width: 767px) {
-        .hero { 
-            height: auto; 
-            min-height: 100vh; 
-            background-attachment: scroll; /* Better performance on mobile */
+        /* Ẩn scrollbar trên mobile để không chiếm không gian */
+        html, body {
+            scrollbar-width: none; /* Firefox */
         }
-        .hero-title { font-size: 32px; }
-        .hero-subtitle { font-size: 14px; letter-spacing: 2px; }
-        .section-padding { padding: 60px 0; }
-        .section-main-title { font-size: 22px; }
-        .btn-contact { 
-            padding: 8px 16px; 
-            font-size: 12px; 
+        html::-webkit-scrollbar, body::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Edge */
         }
+
+        /* === HEADER MOBILE === */
+        header { padding: 10px 0; }
         .logo-img { height: 35px; }
         
         .header-right {
             gap: 8px;
+            align-items: center;
         }
         
+        /* Ẩn text "Tải Hồ Sơ", chỉ hiện icon trên mobile */
+        .btn-contact { 
+            padding: 6px 10px; 
+            font-size: 13px; 
+            border: none;
+            background: var(--primary-red);
+            color: white;
+            border-radius: 6px;
+        }
+        .btn-contact:hover {
+            background: var(--primary-hover);
+            color: white;
+        }
+        .btn-contact span {
+            display: none;
+        }
+        
+        /* Language switcher compact */
         .lang-switcher {
             margin-left: 0;
         }
         
         .lang-current {
-            padding: 4px 8px;
+            padding: 5px 8px;
             font-size: 12px;
+            border-width: 1.5px;
         }
         
         .lang-current .flag {
@@ -791,9 +827,35 @@
             height: 12px;
         }
         
+        .lang-current i {
+            font-size: 8px;
+            margin-left: 2px;
+        }
+        
         .lang-dropdown {
             right: -10px;
             min-width: 140px;
+        }
+        
+        /* Menu toggle - compact, no border */
+        .menu-toggle {
+            font-size: 18px;
+            padding: 6px;
+            margin: 0;
+            min-width: 32px;
+            min-height: 32px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            border-radius: 4px;
+            color: var(--text-dark);
+        }
+        .menu-toggle:active {
+            background: var(--bg-light);
         }
         
         /* Mobile nav dropdown styles */
@@ -805,32 +867,280 @@
             left: 0;
             width: 100%;
             background: white;
-            padding: 20px;
+            padding: 10px 0;
             box-shadow: var(--shadow-lg);
             gap: 0;
+            animation: slideDown 0.3s ease;
         }
         
         .nav-links.active a {
-            padding: 15px 20px;
-            border-bottom: 1px solid #eee;
-            display: block;
+            padding: 14px 24px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            font-weight: 500;
+            min-height: 48px; /* Touch target */
         }
         
         .nav-links.active a:last-child {
             border-bottom: none;
         }
         
-        .nav-links.active a:hover {
+        .nav-links.active a:hover,
+        .nav-links.active a:active {
             background-color: var(--primary-light);
+            color: var(--primary-red);
         }
         
         .nav-links.active a::after {
             display: none;
         }
         
-        /* Contact info responsive */
-        .contact-info-box { padding: 25px; }
-        .info-item { flex-direction: column; text-align: center; gap: 10px; }
+        /* === HERO MOBILE === */
+        .hero { 
+            height: auto; 
+            min-height: 100vh;
+            min-height: 100dvh; /* Dynamic viewport height */
+            background-attachment: scroll;
+            padding-top: 70px;
+            padding-bottom: 40px;
+        }
+        .hero-content {
+            padding: 0 16px;
+        }
+        .hero-title { 
+            font-size: 28px;
+            line-height: 1.3;
+        }
+        .hero-title span {
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+        .hero-subtitle { 
+            font-size: 12px; 
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .hero-btn-group {
+            margin-top: 25px;
+        }
+        .btn {
+            padding: 12px 28px;
+            font-size: 13px;
+        }
+        
+        /* === SECTIONS MOBILE === */
+        .section-padding { padding: 50px 0; }
+        .container { padding: 0 16px; }
+        
+        .section-tag-wrapper {
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        .section-number-tag {
+            font-size: 20px;
+            padding: 4px 12px;
+        }
+        .section-main-title { 
+            font-size: 20px;
+            line-height: 1.4;
+        }
+        .subsection-header {
+            font-size: 14px;
+            padding: 6px 12px;
+        }
+        .red-line-title {
+            font-size: 17px;
+        }
+        
+        /* === TOC MOBILE === */
+        .toc-item {
+            padding: 10px;
+        }
+        .toc-number {
+            width: 32px;
+            height: 32px;
+            font-size: 14px;
+            margin-right: 12px;
+        }
+        .toc-text {
+            font-size: 13px;
+        }
+        .toc-image {
+            margin-top: 20px;
+        }
+        
+        /* === TIMELINE MOBILE === */
+        .timeline {
+            padding-left: 25px;
+        }
+        .timeline-marker {
+            left: -34px;
+            width: 14px;
+            height: 14px;
+        }
+        .timeline-year {
+            font-size: 13px;
+        }
+        
+        /* === PRODUCTS MOBILE === */
+        .products-grid {
+            gap: 20px;
+        }
+        .product-img-wrap {
+            padding: 20px;
+        }
+        .product-img-wrap img {
+            width: 140px;
+            height: 140px;
+        }
+        .product-footer {
+            padding: 15px 12px;
+        }
+        .product-title {
+            font-size: 16px;
+        }
+        .product-desc {
+            font-size: 12px;
+        }
+        .business-areas-list li {
+            font-size: 14px;
+            padding: 10px 0;
+            gap: 8px;
+        }
+        
+        /* === STRENGTHS MOBILE === */
+        .strength-grid {
+            gap: 20px;
+        }
+        .strength-header {
+            padding: 15px;
+        }
+        .strength-header h3 {
+            font-size: 16px;
+        }
+        .strength-body {
+            padding: 20px;
+            font-size: 14px;
+        }
+        
+        /* === EQUIPMENT MOBILE === */
+        .equipment-grid {
+            gap: 25px;
+        }
+        .equipment-img {
+            height: 200px;
+        }
+        .equipment-info {
+            padding: 20px;
+        }
+        .capacity-tag {
+            font-size: 16px;
+        }
+        
+        /* === ISO MOBILE === */
+        .iso-container {
+            gap: 25px;
+        }
+        .iso-frame {
+            border-width: 6px;
+            padding: 6px;
+        }
+        
+        /* === CONTACT MOBILE === */
+        .contact-info-box { 
+            padding: 25px 20px;
+            border-radius: 10px;
+        }
+        .info-item { 
+            flex-direction: column; 
+            text-align: center; 
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .info-icon {
+            width: 36px;
+            height: 36px;
+            margin: 0 auto;
+        }
+        .contact-link {
+            word-break: break-all;
+        }
+        
+        /* === FOOTER MOBILE === */
+        footer {
+            padding: 25px 0;
+        }
+        footer p {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        
+        /* === SCROLL TO TOP MOBILE === */
+        .scroll-top {
+            width: 42px;
+            height: 42px;
+            bottom: 20px;
+            right: 16px;
+            font-size: 16px;
+        }
+        
+        /* === AOS MOBILE: Giảm thiểu animation phức tạp === */
+        [data-aos="flip-left"],
+        [data-aos="flip-right"],
+        [data-aos="flip-up"],
+        [data-aos="flip-down"],
+        [data-aos="fade-left"],
+        [data-aos="fade-right"] {
+            transform: none !important;
+            opacity: 1 !important;
+        }
+        [data-aos="flip-left"].aos-animate,
+        [data-aos="flip-right"].aos-animate,
+        [data-aos="flip-up"].aos-animate,
+        [data-aos="flip-down"].aos-animate,
+        [data-aos="fade-left"].aos-animate,
+        [data-aos="fade-right"].aos-animate {
+            transform: none !important;
+            opacity: 1 !important;
+        }
+    }
+    
+    /* Extra small devices (< 375px) */
+    @media (max-width: 374px) {
+        .hero-title {
+            font-size: 24px;
+        }
+        .hero-subtitle {
+            font-size: 11px;
+            letter-spacing: 1.5px;
+        }
+        .section-main-title {
+            font-size: 18px;
+        }
+        .product-img-wrap img {
+            width: 120px;
+            height: 120px;
+        }
+        .btn-contact {
+            padding: 6px 10px;
+        }
+        .lang-current {
+            padding: 3px 6px;
+        }
+    }
+    
+    /* Slide down animation for mobile menu */
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 </style>
 </head>
@@ -1240,13 +1550,31 @@
     <!-- AOS - Animate On Scroll -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            offset: 80,
-            delay: 0
-        });
+        (function() {
+            var isMobile = window.innerWidth < 768;
+            AOS.init({
+                duration: isMobile ? 600 : 800,
+                easing: 'ease-in-out',
+                once: true,
+                offset: isMobile ? 30 : 80,
+                delay: 0,
+                disable: window.innerWidth < 375 ? true : false
+            });
+            
+            // Trên mobile: giảm delay của tất cả AOS elements
+            if (isMobile) {
+                document.querySelectorAll('[data-aos-delay]').forEach(function(el) {
+                    var delay = parseInt(el.getAttribute('data-aos-delay'));
+                    if (delay > 200) {
+                        el.setAttribute('data-aos-delay', Math.min(delay, 200));
+                    }
+                });
+                // Đổi flip animations sang fade-up trên mobile
+                document.querySelectorAll('[data-aos="flip-left"],[data-aos="flip-right"]').forEach(function(el) {
+                    el.setAttribute('data-aos', 'fade-up');
+                });
+            }
+        })();
     </script>
     
     <!-- Structured Data / JSON-LD -->
